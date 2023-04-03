@@ -9,12 +9,10 @@ class TicTacToe:
         self.player2 = input('Player 2: ')
 
     def display_grid(self):
-        rows = ['|'.join(row) for row in self.grid]
-        print('\n-+-+-\n'.join(rows))
+        print('\n-+-+-\n'.join(['|'.join(row) for row in self.grid]))
 
     def encode_grid(self) -> str:
-        rows = [''.join(row) for row in self.grid]
-        return ''.join(rows)
+        return ''.join([''.join(row) for row in self.grid])
 
 if __name__ == '__main__':
     ttc = TicTacToe()
