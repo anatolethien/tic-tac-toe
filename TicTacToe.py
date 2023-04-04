@@ -58,7 +58,7 @@ class TicTacToe:
         """
         while self.__round <= 9 and not self.__has_winner():
             self.__round += 1
-            self.__player = self.__which_player()
+            self.__which_player()
             print(self.__round_info())
             x, y = self.__user_input()
             self.__move(x, y)
