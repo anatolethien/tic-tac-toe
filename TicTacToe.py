@@ -50,6 +50,8 @@ class TicTacToe:
                 y = int(input('y: '))
                 if x in valid and y in valid and self.__grid[y - 1][x - 1] == ' ':
                     break
+                else:
+                    print('ERROR:', 'invalid input')
         elif self.__player == self.__CROSS:
             # CPU
             while True:
@@ -57,6 +59,8 @@ class TicTacToe:
                 y = int(input('y: '))
                 if x in valid and y in valid and self.__grid[y - 1][x - 1] == ' ':
                     break
+                else:
+                    print('ERROR:', 'invalid input')
         return x, y
 
     def __move(self, x: int, y: int):
