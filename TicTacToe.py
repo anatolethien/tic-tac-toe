@@ -44,12 +44,19 @@ class TicTacToe:
         x = 0
         y = 0
         if self.__player == self.__CIRCLE:
-            while not x in valid and not y in valid:
+            # Human
+            while True:
                 x = int(input('x: '))
                 y = int(input('y: '))
-        else:
+                if x in valid and y in valid and self.__grid[y - 1][x - 1] == ' ':
+                    break
+        elif self.__player == self.__CROSS:
             # CPU
-            pass
+            while True:
+                x = int(input('x: '))
+                y = int(input('y: '))
+                if x in valid and y in valid and self.__grid[y - 1][x - 1] == ' ':
+                    break
         return x, y
 
     def __move(self, x: int, y: int):
@@ -60,7 +67,7 @@ class TicTacToe:
         """
         Starts the game.
         """
-        while self.__round <= 9 or not self.__has_winner():
+        while self.__round <= 8 and not self.__has_winner():
             self.__round += 1
             self.__which_player()
             print(self.__round_info())
