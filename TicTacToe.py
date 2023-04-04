@@ -48,7 +48,9 @@ class TicTacToe:
             while True:
                 x = int(input('x: '))
                 y = int(input('y: '))
-                if x in valid and y in valid and self.__grid[y - 1][x - 1] == ' ':
+                if (x in valid and
+                    y in valid and
+                    self.__grid[y - 1][x - 1] == ' '):
                     break
                 else:
                     print('ERROR:', 'invalid input')
@@ -57,15 +59,17 @@ class TicTacToe:
             while True:
                 x = int(input('x: '))
                 y = int(input('y: '))
-                if x in valid and y in valid and self.__grid[y - 1][x - 1] == ' ':
+                if (x in valid and
+                    y in valid and
+                    self.__grid[y - 1][x - 1] == ' '):
                     break
                 else:
                     print('ERROR:', 'invalid input')
         return x, y
 
     def __move(self, x: int, y: int):
-        if self.__grid[x - 1][y - 1] == ' ':
-            self.__grid[x - 1][y - 1] = self.__player
+        if self.__grid[y - 1][x - 1] == ' ':
+            self.__grid[y - 1][x - 1] = self.__player
 
     def play(self):
         """
