@@ -4,6 +4,7 @@ class TicTacToe:
     players take turns marking either `×` or `○` on the grid. The first player
     that places three marks in a row wins.
     """
+
     def __init__(self):
         self.__CIRCLE = '○'
         self.__CROSS = '×'
@@ -38,33 +39,20 @@ class TicTacToe:
 
     def __round_info(self) -> str:
         return f'Round {self.__round} - Player {self.__player}'
-    
-    def __user_input(self) -> tuple[int, int]:
+
+    def __input(self) -> tuple[int, int]:
         valid = {1, 2, 3}
         x = 0
         y = 0
-        if self.__player == self.__CIRCLE:
-            # Human
-            while True:
-                x = int(input('x: '))
-                y = int(input('y: '))
-                if (x in valid and
-                    y in valid and
-                    self.__grid[y - 1][x - 1] == ' '):
-                    break
-                else:
-                    print('ERROR:', 'invalid input')
-        elif self.__player == self.__CROSS:
-            # CPU
-            while True:
-                x = int(input('x: '))
-                y = int(input('y: '))
-                if (x in valid and
-                    y in valid and
-                    self.__grid[y - 1][x - 1] == ' '):
-                    break
-                else:
-                    print('ERROR:', 'invalid input')
+        while True:
+            x = int(input('x: '))
+            y = int(input('y: '))
+            if (x in valid and
+                y in valid and
+                    self.__grid[y - 1][x - 1] == self.EMPTY):
+                break
+            else:
+                print('ERROR:', 'invalid input')
         return x, y
 
     def __move(self, x: int, y: int):
@@ -75,11 +63,11 @@ class TicTacToe:
         """
         Starts the game.
         """
-        while self.__round <= 8 and not self.__has_winner():
+        while self.__round < 9 and not self.__has_winner():
             self.__round += 1
             self.__which_player()
             print(self.__round_info())
-            x, y = self.__user_input()
+            x, y = self.__input()
             self.__move(x, y)
             print(self)
         if self.__has_winner():
